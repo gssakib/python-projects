@@ -1,18 +1,24 @@
-my_name = 'Zed A. Shaw'
-my_age = 35 
-my_height = 74
-my_weight = 180
-my_eyes = 'Blue'
-my_teeth = 'White'
+name = 'Zed A. Shaw'
+age = 35 
+height = 74
+weight = 180
+eyes = 'Blue'
+teeth = 'White'
 # my_teeth = "White"
-my_hair = 'Brown'
+hair = 'Brown'
+in_no_len = 1
+in_no_mass = 1
+in_cm = in_no_len * 2.54
+lb_kg = in_no_mass * 0.45
 
-print "Let's talk about %s." % my_name
-print "He's %d inches tall." % my_height
-print "He's %d pounds heavy." %my_weight
+print "Let's talk about %s." % name
+print "He's %d inches tall." % height
+print "He's %d pounds heavy." %weight
 print "Actually that's not too heavy."
-print "He's got %s eyes and %s hair." % (my_eyes, my_hair)
-print "His teeth are usually %s depending on the coffee." % my_teeth
+print "He's got %s eyes and %s hair." % (eyes, hair)
+print "His teeth are usually %s depending on the coffee." % teeth
 
-print "If I add %d, %d, and %d I get %d." %(my_age, my_height,my_weight, my_age + my_height + my_weight)
+print "If I add %d, %d, and %d I get %d." %(age, height,weight, age + height + weight)
  
+print "The conversion factor converting from inches to centi-meter is 1 inch = %f centi-meter" % in_cm
+print "The conversion factor converting from pound-mass to kilo-grams is 1 pound-mass = %f kilo-grams" % lb_kg
