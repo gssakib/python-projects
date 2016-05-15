@@ -1,6 +1,10 @@
 from sys import argv 
 
 script , int_file, rslt_file, usr_name, pas = argv
+#defining a function to read input from external files
+def read_integers(int_file):
+	with open(int_file) as f:
+		return map(int,f)
 
 
 
@@ -11,26 +15,26 @@ if pas == 'dfort360' :
 	if int(opr) == 1 :
 		print"Performing Operation......"
 		in_file = open(int_file, 'r')
-		num_1 = in_file.readline()
-		num_2 = in_file.readline(2)
+		num_1 = 
+		num_2 = 
 		rslt = num_1 + num_2
 	elif int(opr) == 2 :
 		print"Performing Operation......"
 		in_file = open(int_file, 'r')
-		num_1 = int(in_file.readline())
-		num_2 = int(in_file.readline(2))
+		num_1 = 
+		num_2 = 
 		rslt = num_1 - num_2
 	elif int(opr) == 3:
 		print"Performing Operation......"
 		in_file = open(int_file, 'r')
-		num_1 = int(in_file.readline())
-		num_2 = int(in_file.readline(2))
+		num_1 = 
+		num_2 = 
 		rslt = num_1 * num_2
 	elif int(opr) == 4:
 		print"Performing Operation......"
 		in_file = open(int_file, 'r')
-		num_1 = int(in_file.readline())
-		num_2 = int(in_file.readline(2))
+		num_1 = 
+		num_2 = 
 		rslt = num_1 / num_2
 	out_file.write(rslt)
 	out_file.close()
@@ -41,6 +45,7 @@ else :
 	print"Wrong pass! Please try again!"
 
 		
+
 
 	
 	
