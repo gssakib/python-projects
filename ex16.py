@@ -2,7 +2,7 @@ from sys import argv
 
 script, filename = argv
 
-print "We are going to erase %r. " % filename
+print "We are going to erase %r. " % filename 
 print "If you dont want that, hit CTRL -C (^C). "
 print "If you do want that, hit RETURN. "
 
