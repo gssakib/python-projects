@@ -1,8 +1,13 @@
-def root(a,b) :
-	return a**b 
+
 	
 	
-x = root(4,2)
+while True:
+    try: 
+        choice = int(raw_input(">>>>>>>"))
+    except ValueError:
+        print "Please enter a number"
+    else:
+        break
+        choice = int(choice)
 
-print x
-
+print choice

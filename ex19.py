@@ -1,7 +1,11 @@
+def root(a,b) :
+	return a**b 
+	
 def cheese_and_crackers(cheese_count, boxes_of_crackers): # defining the fuction 
 	print "You have %r cheese !" % cheese_count #associating first arg 
 	print "You have %r boxes of crackers!" % boxes_of_crackers #associating first arg 
 	print "Man that's enough for a party!" #normal print
+	print "the root of amount_of_cheese: %r amount_of_crackers: %r" %(root(cheese_count,0.5),root(boxes_of_crackers,0.5))
 	print "Get a blanket. \n" 
 	
 
