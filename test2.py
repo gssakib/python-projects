@@ -1,83 +1,34 @@
-import random
-from urllib import urlopen
+from __future__ import print_function
+
 import sys
-
-WORD_URL = "http://learncodethehardway.org/words.txt"
-WORDS = []
-
-PHRASES = {
-    "class %%%(%%%):":
-      "Make a class named %%% that is-a %%%.",
-    "class %%%(object):\n\tdef __init__(self, ***)" :
-      "class %%% has-a __init__ that takes self and *** parameters.",
-    "class %%%(object):\n\tdef ***(self, @@@)":
-      "class %%% has-a function named *** that takes self and @@@ parameters.",
-    "*** = %%%()":
-      "Set *** to an instance of class %%%.",
-    "***.***(@@@)":
-      "From *** get the *** function, and call it with parameters self, @@@.",
-    "***.*** = '***'":
-      "From *** get the *** attribute and set it to '***'."
-}
-
-# do they want to drill phrases first
-if len(sys.argv) == 2 and sys.argv[1] == "english":
-    PHRASE_FIRST = True
-else:
-    PHRASE_FIRST = False
-
-# load up the words from the website
-for word in urlopen(WORD_URL).readlines():
-    WORDS.append(word.strip())
+sys.path.insert(0,'C:\Users\gazi\Documents\OpenMDAO')
+import openmdao
 
 
-def convert(snippet, phrase):
-    class_names = [w.capitalize() for w in
-                   random.sample(WORDS, snippet.count("%%%"))]
-    other_names = random.sample(WORDS, snippet.count("***"))
-    results = []
-    param_names = []
+from openmdao.api import Group, Problem, Component, IndepVarComp
+class MultiplyByTwoComponent(Component):
+    def __init__(self):
+        super(MultiplyByTwoComponent, self).__init__() # always call the base class constructor first
+        self.add_param('x_input', val=0.) # the input that will be multiplied by 2
+        self.add_output('y_output', shape=1) # shape=1 => a one dimensional array of length 1 (a scalar)
 
-    for i in range(0, snippet.count("@@@")):
-        param_count = random.randint(1,3)
-        param_names.append(', '.join(random.sample(WORDS, param_count)))
+        # an internal variable that counts the number of times this component was executed
+        self.counter = 0
 
-    for sentence in snippet, phrase:
-        result = sentence[:]
+    def solve_nonlinear(self, params, unknowns, resids):
+        unknowns['y_output'] = params['x_input']*2
+        self.counter += 1
 
-        # fake class names
-        for word in class_names:
-            result = result.replace("%%%", word, 1)
+root = Group()
+root.add('indep_var', IndepVarComp('x', 7.0))
+root.add('my_comp', MultiplyByTwoComponent())
+root.connect('indep_var.x', 'my_comp.x_input')
 
-        # fake other names
-        for word in other_names:
-            result = result.replace("***", word, 1)
+prob = Problem(root)
+prob.setup()
+prob.run()
 
-        # fake parameter lists
-        for word in param_names:
-            result = result.replace("@@@", word, 1)
-
-        results.append(result)
-
-    return results
-
-
-# keep going until they hit CTRL-D
-try:
-    while True:
-        snippets = PHRASES.keys()
-        random.shuffle(snippets)
-
-        for snippet in snippets:
-            phrase = PHRASES[snippet]
-            question, answer = convert(snippet, phrase)
-            if PHRASE_FIRST:
-                question, answer = answer, question
-
-            print question
-
-            raw_input("> ")
-            print "ANSWER:  %s\n\n" % answer
-except EOFError:
-    print "\nBye"
-	
+result = prob['my_comp.y_output']
+count = prob.root.my_comp.counter
+print(result)
+print(count)

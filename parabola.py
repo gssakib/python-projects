@@ -1,5 +1,10 @@
 from __future__ import print_function
 
+import sys
+sys.path.insert(0,'C:\Users\gazi\Documents\OpenMDAO')
+import openmdao
+
+
 from openmdao.api import IndepVarComp, Component, Problem, Group
 
 class Paraboloid(Component):
@@ -39,8 +44,8 @@ if __name__ == "__main__":
 
     root = top.root = Group()
 
-    root.add('p1', IndepVarComp('x', 3.0))
-    root.add('p2', IndepVarComp('y', -4.0))
+    root.add('p1', IndepVarComp('x', 5.0))
+    root.add('p2', IndepVarComp('y', 2.0))
     root.add('p', Paraboloid())
 
     root.connect('p1.x', 'p.x')
