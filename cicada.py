@@ -19,7 +19,7 @@ if ((name == "buterfly")or (name== "seeker") or (name == "da-vinci"))  and pas =
 			print "Congrats! Your are only a step away from illumination, or shall I say two cold steps..."
 			print "You walk one mile south, one mile west, and one mile north. You end up exactly where you started. Where are you?"
 			path_3 = raw_input(">>>>>>>>>")
-			if path_3 == "North Pole" or "South Pole":
+			if path_3 == "North Pole" or path_3 == "South Pole":
 				print"You have reched the end of illumination........."
 				print"..............................................."
 				happy = raw_input("What makes you happy and you would do it if this was the last day you are living?     ")

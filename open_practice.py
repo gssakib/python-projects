@@ -44,6 +44,24 @@ if __name__ == "__main__":
 
     root = top.root = Group()
 
+    root.add('p1', IndepVarComp('x', 3.0))
+    root.add('p2', IndepVarComp('y', -4.0))
+    root.add('my_comp', Paraboloid())
+
+    root.connect('p1.x', 'my_comp.x')
+    root.connect('p2.y', 'my_comp.y')
+
+    top.setup()
+    top.run()
+
+    print(top['my_comp.f_xy'])
+	
+if __name__ == "__main__":
+
+    top = Problem()
+
+    root = top.root = Group()
+
     root.add('p1', IndepVarComp('x', 5.0))
     root.add('p2', IndepVarComp('y', 2.0))
     root.add('p', Paraboloid())
@@ -90,3 +108,30 @@ print('Minimum of %f found at (%f,%f)' % (top['p.f_xy'],top['p.x'],top['p.y']))
  	
 
 	
+
+
+
+
+# Initial value of x and y set in the IndepVarComp.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
