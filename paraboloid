@@ -1,0 +1,32 @@
+Metadata:
+Params:
+  comp.x: {'shape': 1, 'top_promoted_name': 'x', 'pathname': 'comp.x', 'val': 0.0, 'size': 1}
+  comp.y: {'shape': 1, 'top_promoted_name': 'y', 'pathname': 'comp.y', 'val': 0.0, 'size': 1}
+Unknowns:
+  x: {'val': 50.0, 'is_desvar': True, 'shape': 1, 'pathname': 'my_comp.x', 'top_promoted_name': 'x', 'size': 1}
+  y: {'val': 50.0, 'is_desvar': True, 'shape': 1, 'pathname': 'p2.y', 'top_promoted_name': 'y', 'size': 1}
+  f_xy: {'is_objective': True, 'val': 0.0, 'shape': 1, 'pathname': 'comp.f_xy', 'top_promoted_name': 'f_xy', 'size': 1}
+Timestamp: 1464988789.976
+Iteration Coordinate: rank0:Driver/0
+Iteration succeeded: yes
+Params:
+  comp.x: -11.2796624018
+  comp.y: -32.1202658407
+Timestamp: 1464988789.976
+Iteration Coordinate: rank0:Driver/1
+Iteration succeeded: yes
+Params:
+  comp.x: 40.0690844018
+  comp.y: -11.3779204251
+Timestamp: 1464988789.976
+Iteration Coordinate: rank0:Driver/2
+Iteration succeeded: yes
+Params:
+  comp.x: 10.5913699835
+  comp.y: 41.1473528267
+Timestamp: 1464988789.977
+Iteration Coordinate: rank0:Driver/3
+Iteration succeeded: yes
+Params:
+  comp.x: -39.0603197184
+  comp.y: 22.2943250196

@@ -22,33 +22,32 @@ class SellarDisc1(Component):
 	def solve_nonlinear(self, params, unknowns, resids):
 		z1 = params['z'][0]
 		z2 = params['z'][1]
-		x1 = params['x1']
+		x = params['x1']
 		
 		y2 = params['y2']
 		
 		y1 = unknowns['y1']
 		
-		y1 = z1**2 + x1 + z2 -0.2*y2 
+		y1 = z1**2 + x + z2 -0.2*y2 
 	def linearize(self, params, unknowns, resids):
 		# "Jacobian method.."
 		
 		J = {}
-		
-		J['y1', 'x1'] = 1.0
 		J['y1','y2'] = -0.2
-		
 		J['y1', 'z'] = np.array([[2*params['z'][0] , 1.0]])
+		J['y1', 'x1'] = 1.0
+		
+		
+		
 			
 		return J
-
-
 		
 class SellarDisc2(Component):
 	def __init__(self):
 		super(SellarDisc2, self).__init__()
-		
-		self.add_param('y1', val = 1.0)
 		self.add_param('z', val = np.zeros(2))
+		self.add_param('y1', val = 1.0)
+		
 		self.add_output('y2', val = 1.0)
 		
 	
@@ -75,6 +74,7 @@ class SellarDisc2(Component):
 		
 		return J
 		
+
 from openmdao.api import ExecComp, IndepVarComp, Group, NLGaussSeidel, ScipyGMRES
 
 class SellarDerivatives(Group):
@@ -98,11 +98,11 @@ class SellarDerivatives(Group):
 		self.ln_solver = ScipyGMRES()
 		
 		
+
 from openmdao.api import Problem, ScipyOptimizer
 
 top = Problem()
 top.root = SellarDerivatives()
-
 top.driver = ScipyOptimizer()
 top.driver.options['optimizer'] = 'SLSQP'
 top.driver.options['tol'] = 1.0e-8
@@ -126,3 +126,12 @@ print ("Minimum found at (%f,%f,%f)"% (top['z'][0],top['z'][1],top['x1']))
 print ("Coupling vars: %f, %f" %(top['y1'],top['y2']))
 print ("Minimum Objective: %f" %(top['obj'])) 
 
+
+
+
+
+
+
+
+		
+		

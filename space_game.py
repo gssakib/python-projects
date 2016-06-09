@@ -1,11 +1,9 @@
 ## base Scene class
 
 class Scene(object):
-	def __init__ (self, name, sex, lives, status, enter)
+	def __init__ (self, name, sex,status, enter)
 		self.name = name
-		self.sex = sex
-		self.lives = lives
-		self.status = status
+		
 		
 	
 	
@@ -53,18 +51,18 @@ class Engine(object):
 
 ## class Death derived from base Scene, dies in various funny ways		
 class Death(Scene):
-	def __init__(self, name, sex, lives, status, enter)
-		super(Death,self).__init__(name,sex,lives,enter)
+	def __init__(self, name, sex, status, enter)
+		super(Death,self).__init__(name,sex,enter)
 		
 	def term(self):
-		self.lives = 0
-		print"Sorry %s, you must die now because you have %s lives remaining. Loser...."% (self.name,self.lives)
+		
+		print"Sorry %s, you must die now because you are a......0. Loser...."% (self.name)
 	
 		
 #class CentralCorridor derived from base class Scene. Right after opening scene, where hero faces gothon a
 class CentralCorridor(Scene):
-	def __init__(self,name,sex, lives, status):
-		super(CentralCorridor,self).__init__(name, sex,lives, status)
+	def __init__(self,name,sex, status):
+		super(CentralCorridor,self).__init__(name, sex, status)
 	
 	
 	def nar(self):
@@ -81,7 +79,7 @@ class CentralCorridor(Scene):
 
 #class LaserWeaponArmory derived from base class Scene		
 class LaserWeaponArmory(Scene):
-	def __init__(self,name,sex,lives,status, enter)
+	def __init__(self,name,sex,status, enter)
 
 		
 # class EscapePod derived from base class Scene		
