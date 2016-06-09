@@ -1,7 +1,7 @@
 import random
 from urllib import urlopen
 import sys
-
+#test comment 1
 WORD_URL = "http://learncodethehardway.org/words.txt"
 WORDS = []
 
